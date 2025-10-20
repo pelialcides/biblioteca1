@@ -1,0 +1,38 @@
+nav {
+  background-color: #00ffff; /* Cyan background */
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+li {
+  display: inline;
+}
+
+a {
+  text-decoration: none;
+  color: #0000ff; /* Blue links */
+  padding: 5px 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Style for the logout button to make it look like a button */
+a[href="#"] {
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 5px 10px;
+  color: #000;
+}

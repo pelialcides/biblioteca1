@@ -1,0 +1,38 @@
+<div class="filter-buttons">
+  <button 
+    [class.active]="isActiveFilter('all')" 
+    (click)="setFilter('all')">
+    Show All Books
+  </button>
+  <button 
+    [class.active]="isActiveFilter('read')" 
+    (click)="setFilter('read')">
+    Show Read Books
+  </button>
+  <button 
+    [class.active]="isActiveFilter('notRead')" 
+    (click)="setFilter('notRead')">
+    Show Not Read Books
+  </button>
+</div>
+
+<h1>Livros de JS</h1>
+
+<div *ngIf="books$ | async as books; else loading" class="books-container">
+  <div *ngFor="let book of books" class="book-card">
+    <h2><a [routerLink]="['/books', book.id]">{{ book.title }}</a></h2>
+    <p>by {{ book.author }}</p>
+    <img [src]="'livros/' + book.imageUrl" [alt]="book.title">
+    <div class="book-actions">
+      <div class="read-status">
+        <span>Already Read:</span>
+        <span>{{ book.read ? '✔️' : '❌' }}</span>
+      </div>
+      <button (click)="deleteBook(book.id)">Delete Book</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading books...</p>
+</ng-template>

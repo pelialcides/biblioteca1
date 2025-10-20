@@ -1,0 +1,20 @@
+<div *ngIf="book$ | async as book; else loading">
+  <div class="book-detail-container" *ngIf="book; else notFound">
+    <h1>{{ book.title }}</h1>
+    <div class="book-content">
+      <img [src]="'../../livros/' + book.imageUrl" [alt]="book.title">
+      <div class="book-info">
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>Publication Year:</strong> {{ book.publicationYear }}</p>
+        <p><strong>Genre:</strong> {{ book.genre }}</p>
+      </div>
+    </div>
+    <a routerLink="/books">Back to list</a>
+  </div>
+  <ng-template #notFound>
+    <p>Book not found.</p>
+  </ng-template>
+</div>
+<ng-template #loading>
+  <p>Loading book details...</p>
+</ng-template>
